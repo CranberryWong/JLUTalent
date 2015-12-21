@@ -1,0 +1,19 @@
+{% extends "admin_base.html" %}
+{% block maincontent %}
+<h2 class="sub-header">Mail Sending</h2>
+<form role="form" method="POST" action="/admin/mail" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Title</label>
+    <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Enter Title" name="mtitle">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Content</label>
+    <textarea rows="16" class="form-control" id="exampleInputPassword1" placeholder="Enter Content" name="content"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Contactor</label>
+    <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Enter Contactor" name="contact">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% end %}

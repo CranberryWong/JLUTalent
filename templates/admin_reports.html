@@ -1,0 +1,33 @@
+{% extends "admin_base.html" %}
+{% block active4 %}class="active"{% end %}
+{% block maincontent %}
+<h2 class="sub-header" id="nav-user">Reports Manage</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>name</th>
+        <th>College</th>
+        <th>email</th>
+        <th>reason</th>
+        <th>resume</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contact in contactlist %}
+      <tr>
+        <td>{{ contact.cid }}</td>
+        <td>{{ contact.cname }}</td>
+        <td>{{ contact.ccollege }}</td>
+        <td>{{ contact.ccemail }}</td>
+        <td>{{ contact.creason }}</td>
+        <td><a href="{{ contact.cresume }}">查看</a></td>
+        <td><a href="/admin/delreports?cid={{ contact.cid }}"><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></a></td>
+      </tr>
+      {% end %}
+    </tbody>
+  </table>
+</div>
+{% end %}

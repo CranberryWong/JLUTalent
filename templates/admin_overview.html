@@ -1,0 +1,146 @@
+{% extends "admin_base.html" %}
+{% block customJSLink %}
+<script>
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+</script>
+{% end %}
+{% block active1 %}class="active"{% end %}
+{% block graghic %}
+<h1 class="page-header">Admin</h1>
+
+<div class="row placeholders">
+  {% for user in userlist %}
+  {% if user.luid == 3 or user.luid == 2 %}
+  <div class="col-xs-6 col-sm-3 placeholder">
+    <img src="{{ user.uavatar }}" class="img-responsive" alt="Generic placeholder thumbnail" style="height:150px;width:150px;">
+    <h4>{{ user.username }}</h4>
+    <span class="text-muted">{{ user.ucollege }}</span>
+  </div>
+  {% end %}
+  {% end %}
+</div>
+{% end %}
+{% block maincontent %}
+<ul id="myTab" class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Users</a></li>
+      <li role="presentation" class=""><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">Articles</a></li>
+      <!--<li role="presentation" class=""><a href="#dropdown1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1" aria-expanded="false">Page</a></li>-->
+      <li role="presentation" class=""><a href="#dropdown2" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2" aria-expanded="false">Type</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Username</th>
+
+                <th>Grade</th>
+                <th>Domain</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in userlist %}
+              <tr>
+                <td>{{ user.uid }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.ugrade }}</td>
+                <td>{{ user.udomain }}</td>
+                <td><a href="/admin/deluser?uid={{ user.uid }}">删除</a></td>
+              </tr>
+              {% end %}
+            </tbody>
+          </table>
+        </div>      </div>
+      <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Publish Time</th>
+                <th>Change Time</th>
+                <th>Editor</th>
+                <th>Type</th>
+                <th>Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for article in articlelist %}
+              <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.pubtime }}</td>
+                <td>{{ article.chgtime }}</td>
+                <td>{{ article.user }}</td>
+                <td>{{ article.type }}</td>
+                <td><div><span><a href="/admin/editarticle?aid={{ article.id }}">Edit</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/admin/delarticle?aid={{ article.id }}">Delete</a></span></div>
+              </tr>
+              {% end %}
+            </tbody>
+          </table>
+        </div>      </div>
+      <div role="tabpanel" class="tab-pane fade" id="dropdown1" aria-labelledby="dropdown1-tab">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Publish Time</th>
+                <th>Change Time</th>
+                <th>Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for page in pagelist %}
+              <tr>
+                <td>{{ page.pid }}</td>
+                <td>{{ page.ptitle }}</td>
+                <td>{{ page.ppubtime }}</td>
+                <td>{{ page.pchgtime }}</td>
+                <td><div><span><a href="/admin/editpage?pid={{ page.pid }}">Edit</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/admin/delpage?pid={{ page.pid }}">Delete</a></span></div>
+        </td>
+              </tr>
+              {% end %}
+            </tbody>
+          </table>
+        </div>      </div>
+      <div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledby="dropdown2-tab">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for type in typelist %}
+              <tr>
+                <td>{{ type.tid }}</td>
+                <td>{{ type.typename }}</td>
+                <td><div><span><a href="/admin?tid={{ type.tid }}">Edit</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/admin/deltype?tid={{ type.tid }}">Delete</a></span></div></td>
+              </tr>
+              {% end %}
+            </tbody>
+          </table>
+          <form class="form-inline" method="POST" action="/admin">
+        <div class="form-group">
+          <input type="hidden" name="tid" value="{{ typeobj.tid }}">
+        <label class="sr-only" for="exampleInputEmail3">Add New Type</label>
+        <input type="input" class="form-control" id="exampleInputEmail3" placeholder="Enter New Type" name="typename" value="{{ typeobj.typename }}">
+        </div>
+        <button type="submit" class="btn btn-default" {% if not typeobj.typename %}disabled{% end %}>Submit</button>
+        </form>
+        </div>
+        </div>
+      </div>
+    </div>
+{% end %}

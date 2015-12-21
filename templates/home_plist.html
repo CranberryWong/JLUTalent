@@ -1,0 +1,28 @@
+{% extends "home_listbase.html" %}
+{% block active2 %}class="active"{% end %}
+    {% block submaincontent %}
+
+        {% for page in list %}
+        <div class="blog-post">
+          <h2 class="blog-post-title"><a href="/projects/p/{{ page.pid }}">{{ page.ptitle }}</a></h2>
+          <p class="blog-post-meta">Create time:{{ page.ppubtime }}&nbsp;&nbsp;&nbsp;&nbsp;Change time:{{ page.pchgtime }}</p>
+          <P> {{ page.pcontent[:200] }}<a href="/projects/p/{{ page.pid }}">&nbsp;&nbsp;Show all...</a></p>
+        </div><!-- /.blog-post -->
+        <hr>
+        {% end %}
+
+        <div style="text-align:center;margin-top:80px;">
+          <nav>
+            <ul class="pagination">
+              <li><a href="{{ handler.pagination.action }}{{ handler.pagination.pre }}">&laquo;</a></li>
+              {% for page in handler.pagination.pages %}
+              <li {% if handler.pagination.current == page %} class="active" {% end %}><a href="{{ handler.pagination.action }}{{ page }}">{{ page }}</a></li>
+              {% end %}
+              <li><a href="{{ handler.pagination.action }}{{ handler.pagination.next }}">&raquo;</a></li>
+              </ul>
+            </ul>
+          </nav>
+        </div>
+
+    {% end %}
+    <!-- /END THE FEATURETTES -->

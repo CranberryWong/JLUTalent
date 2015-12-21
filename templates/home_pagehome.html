@@ -1,0 +1,18 @@
+{% extends "home_page.html" %}
+{% block customJSLink %}
+{% end %}
+{% block subcontent %}
+{% for article in articlelist %}
+<div class="memberfeed">
+<div class="blog-post">
+<h2 class="blog-post-title"><a href="/articles/a/{{ article.id }}">{{ article.title }}</a></h2>
+Type:<a href="{{ article.typelink }}">{{ article.type }}</a>
+<p class="blog-post-meta">Create time:{{ article.pubtime }}&nbsp;&nbsp;&nbsp;&nbsp;Change time:{{ article.chgtime }}</p>
+<P> {{ article.subcontent }}<a href="/articles/a/{{ article.id }}">Show all...</a></p>
+{% if handler.signeduser == user.username.encode('utf8') %}
+<div><span><a href="/members/m/{{ user.uid }}/write?aid={{ article.id }}">Edit</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/members/m/{{ user.uid }}/delete?aid={{ article.id }}">Delete</a></span></div>
+{% end %}
+</div><!-- /.blog-post -->
+</div>
+{% end %}
+{% end %}

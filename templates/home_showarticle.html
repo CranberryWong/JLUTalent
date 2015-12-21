@@ -1,0 +1,9 @@
+{% extends "home_listbase.html" %}
+    {% block submaincontent %}
+    <div class="blog-post">
+      <h2 class="blog-post-title"><a href="/articles/a/{{ article.id }}">{{ article.title }}</a></h2>
+      <p><span>分类：<a href="{{ article.typelink }}">{{ _(article.type) }}</a></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blog-post-meta">{{ _("Create time") }}:{{ article.pubtime }}&nbsp;&nbsp;&nbsp;&nbsp;{{ _("Change time") }}:{{ article.chgtime }}</span></p>
+      <P> {{ article.content }}</p>
+    </div><!-- /.blog-post -->
+    {% end %}
+    <!-- /END THE FEATURETTES -->

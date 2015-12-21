@@ -1,0 +1,74 @@
+{% extends "home_base.html" %}
+{% block ngapp %}
+ng-app="myapp"
+{% end %}
+{% block customCSSLink %}
+<link href="/static/css/blog.css" rel="stylesheet">
+{% end %}
+{% block customJSLink %}
+<script src="/static/js/angular.js"></script>
+{% end %}
+{% block carousel %}
+    <div class="header-back" id="content" tabindex="-1">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2 col-md-2.col-xs-12.col-sm-3">
+            <img class="header-img-fix" src='/static/images/jluwhite.png'>
+            </div>
+            <div class="col-lg-10.col-md-10.col-xs-12.col-sm-9">
+              <h1> 吉林大学人才工作办公室</h1>
+              <p> Office of Talent Management</p>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+{% end %}
+    {% block maincontent %}
+          
+    <div class="margintopfixed">
+    <div class="row">
+
+      <div class="col-sm-8 blog-main">
+        {% block submaincontent %}
+        {% end %}
+      </div><!-- /.blog-main -->
+
+      <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="sidebar-module sidebar-module-inset">
+          {% if handler.meetinfo != None %}
+          <h4><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>&nbsp;&nbsp;{{ _("Meeting Info") }}</h4>
+          <div class="well">
+            <p><strong>{{ handler.meetinfo.mtitle }}</strong></p>
+            <p>{{ handler.meetinfo.mcontent }}</p>
+            <p>{{ handler.meetinfo.mcettime }}</p>
+        </div>
+        {% end %}
+        </div>
+        <div class="sidebar-module">
+          <h4><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>&nbsp;&nbsp;{{ _("Archives") }}</h4>
+          <ol class="list-unstyled">
+            {% for art in handler.articlebydate%}
+            <li><i class="icon-hand-right"></i>&nbsp;&nbsp;&nbsp;<a href="/q/date/{{ art['year']}}/{{ art['month'] }}">{{ art['year'] }}-{{ art['month'] }}（{{ art['num'] }}）</a></li>
+            {% end %}
+          </ol>
+        </div>
+        <div class="sidebar-module">
+          <h4><span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;&nbsp;{{ _("Friendly Link") }}</h4>
+          <ol class="list-unstyled">
+
+
+            {% for link in handler.links %}
+            <li>&nbsp;&nbsp;&nbsp;<a href="{{ link.lkurl }}" alt="{{ link.lkdescribe }}">{{ link.lkname }}</a></li>
+            {% end %}
+          </ol>
+        </div>
+      </div><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+  </div>
+
+
+
+    {% end %}
+    <!-- /END THE FEATURETTES -->

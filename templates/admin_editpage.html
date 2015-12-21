@@ -1,0 +1,59 @@
+{% extends "admin_base.html" %}
+{% block customCssLink %}
+<link rel="stylesheet" type="text/css" href="{{ static_url("simditor/styles/simditor.css") }}" />
+{% end %}
+{% block active2 %}class="active"{% end %}
+{% block maincontent %}
+<h2 class="sub-header">Push New Page</h2>
+<form role="form" method="POST" action="/admin/editpage" enctype="multipart/form-data">
+  <input type="hidden" class="form-control" id="exampleInputEmail1" name="pid" value="{{ page.pid }}">
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Title</label>
+    <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Enter title" name="ptitle" value="{{ page.ptitle }}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Content</label>
+    <textarea rows="16" class="form-control" id="editor" placeholder="Enter content with markdown" name="pcontent">{{ page.pcontent }}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" name="file" id="exampleInputFile" value="{{ page.ppic }}">
+    <p class="help-block">Piece of picture</p>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="reset" class="btn btn-default">Reset</button>
+</form>
+{% end %}
+{% block addJS %}
+<script type="text/javascript" src="{{static_url("simditor/scripts/module.js")}}"></script>
+<script type="text/javascript" src="{{static_url("simditor/scripts/hotkeys.js")}}"></script>
+<script type="text/javascript" src="{{static_url("simditor/scripts/uploader.js")}}"></script>
+<script type="text/javascript" src="{{static_url("simditor/scripts/simditor.js")}}"></script>
+<script>
+$(function(){
+    toolbar = [ 'title', 'bold', 'italic', 'underline', 'strikethrough',
+            'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|',
+            'link', 'image', 'hr', '|', 'indent', 'outdent' ];
+    var editor = new Simditor( {
+        textarea : $('#editor'),
+        placeholder : '这里输入内容...',
+        toolbar : toolbar,  //工具栏
+        defaultImage : '/static/simditor/images/image.png', //编辑器插入图片时使用的默认图片
+        upload : {
+            url : '/upload', //文件上传的接口地址
+            params: null, //键值对,指定文件上传接口的额外参数,上传的时候随文件一起提交
+            fileKey: 'fileDataFileName', //服务器端获取文件数据的参数名
+            connectionCount: 3,
+            leaveConfirm: '正在上传文件'
+        }
+    });
+   })
+
+</script>
+{% end %}

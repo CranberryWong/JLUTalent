@@ -1,0 +1,41 @@
+{% extends "admin_base.html" %}
+{% block active7 %}class="active"{% end %}
+{% block maincontent %}
+<h2 class="sub-header" id="nav-article">All Meetinfos</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Meet Id</th>
+        <th>Title</th>
+        <th>Create Time</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for meetinfo in meetinfos %}
+      <tr>
+        <td>{{ meetinfo.mid }}</td>
+        <td>{{ meetinfo.mtitle }}</td>
+        <td>{{ meetinfo.mcettime }}</td>
+        <td><div><span><a href="/admin/meetinfo?mid={{ meetinfo.mid }}">Edit</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/admin/delmeetinfo?mid={{ meetinfo.mid }}">Delete</a></span></div></td>
+      </tr>
+      {% end %}
+    </tbody>
+  </table>
+</div>
+<hr>
+<h2 class="sub-header">Add MeetingInfo</h2>
+<form role="form" method="POST" action="/admin/meetinfo" enctype="multipart/form-data">
+  <input type="hidden" name="mid" value="{{ meetinfoobj.mid }}">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Title</label>
+    <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Enter Title" name="mtitle">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Abstract</label>
+    <textarea rows="16" class="form-control" id="exampleInputPassword1" placeholder="Enter Content" name="mcontent"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% end %}

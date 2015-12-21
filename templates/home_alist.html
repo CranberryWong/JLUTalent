@@ -1,0 +1,38 @@
+{% extends "home_listbase.html" %}
+{% block active3 %}class="active"{% end %}
+
+    {% block submaincontent %}
+    {% if thisquery != None %}
+    <ol class="breadcrumb">
+      <li class="active">{{ _(thisquery) }}</li>
+    </ol>
+    {% end %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>{{ _("Title") }}</th>
+                <th>{{ _("Date") }}</th>
+        </thead>
+        <tbody>
+            {% for article in list %}
+            <tr>
+                <td><a href="/articles/a/{{ article.id }}">{{ article.title }}</a></td>
+                <td>{{ article.chgtime }}</td>
+            </tr>
+            {% end %}
+        </tbody>
+        </table>
+    <div style="text-align:center;margin-top:80px;">
+      <nav>
+        <ul class="pagination">
+          <li><a href="{{ handler.pagination.action }}{{ handler.pagination.pre }}">&laquo;</a></li>
+          {% for page in handler.pagination.pages %}
+          <li {% if handler.pagination.current == page %} class="active" {% end %}><a href="{{ handler.pagination.action }}{{ page }}">{{ page }}</a></li>
+          {% end %}
+          <li><a href="{{ handler.pagination.action }}{{ handler.pagination.next }}">&raquo;</a></li>
+          </ul>
+        </ul>
+      </nav>
+    </div>
+    {% end %}
+    <!-- /END THE FEATURETTES -->

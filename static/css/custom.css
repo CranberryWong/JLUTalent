@@ -1,0 +1,128 @@
+body {
+  font-family:'Open Sans', 'Helvetica Neue',
+}
+.navbar-inverse{
+  background-color:rgba(0, 0, 0, 0.7);
+  border-color:rgba(0, 0, 0, 0.7);
+}
+.nav-search-fix{
+  margin:0px 0 0px 0;
+}
+.navbar-search {
+  background-color:#000;
+  border-color:#000;
+  color:#fff;
+  height:50px;
+  border-radius: 0;
+}
+.navbar-search button {
+  
+}
+.navbar-fixed-top {
+    height:50px;
+}
+.nav-search-hub{
+  max-width: 300px;
+}
+.navbar-brand {
+  margin-top:-10px;
+}
+.dropdown-menu {
+  background-color:rgba(0, 0, 0, 0.8);
+  color:#fff;
+}
+.navbar .dropdown-menu a {
+  color:#fff;
+}
+.header-back {
+  min-height:300px;
+  padding:80px 0 50px 0;
+  color:#cdbfe3;
+  background-color:#6f5499;
+  background-image:linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+}
+.header-img-fix {
+  height:150px;
+  width:150px;
+}
+main {
+  padding:50px 0 50px 0;
+}
+/*
+.carousel-caption {
+  background-color:rgba(0,0,0,0.6);
+  height:40%;
+  width:30%;
+  postion:absolute;
+  left:10%;
+  top:50%;
+  padding:30px;
+  text-align:left;
+  color:#fff;
+}
+.carousel-caption hr {
+  border-top: 1px solid #999999;
+}
+.carousel-caption a {
+  color: #999999;
+}
+*/
+.submain {
+  padding-top:25px;
+}
+.slide-block {
+  padding-bottom:10px;
+}
+.slide-fix {
+  margin-bottom:30px;
+}
+.slide-cell {
+  border-radius:10px;
+  border:1px solid #ddd; 
+  height:150px;
+  min-width:300px;
+  margin-right:10px;
+  padding:20px;  
+}
+.slide-cell img {
+  height:70px;
+  float:left;
+}
+.slide-cell .mark-cite {
+  margin-left:20px;
+  float:left;
+  max-width:300px;
+}
+.banner{
+  border-top-left-radius:10px;
+  border-bottom-left-radius:10px;
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+  height:165px;
+  float:left;
+}
+.post-entry {
+  position:absolute;
+  right:10%;
+  top:18%;
+  padding:30px;
+  border:1px solid #fff;
+  border-top-left-radius:10px;
+  border-bottom-left-radius:10px;
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+}
+.post-button{
+  margin:0 auto;
+}
+footer {
+  padding:50px 0 50px 0;
+  background-color:#2a2a2a;
+  color:#ffffff;
+}
+
+header form .btn-default:hover {
+    background-color: black;
+    color: white;
+    border-color: black;
+}

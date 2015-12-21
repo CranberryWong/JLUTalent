@@ -1,0 +1,110 @@
+{% extends "home_base.html" %}
+{% block customCssLink %}<link href="/static/css/animate.css" rel="stylesheet">{% end %}
+{% block active4 %}class="active"{% end %}
+{% block maincontent %}
+<div class="margintopfixed">
+<div class="row">
+
+  <div class="col-lg-3">
+    <form action="/members?degree=" method="GET" class="form-inline">
+          <select class="form-control" name="degree">
+            {% for one in mtype %}
+            <option {% if one == degree %}selected="selected"{% end %}>{{ one }}</option>
+            {% end %}
+          </select>
+          <button type="submit" class="btn btn-default">Filter</button>
+        </form>
+      </div>
+
+
+</div>
+<hr>
+  <div class="row">
+    <div class="col-lg-3 animated fadeInRight">
+    {% for member in memberlist[0::4] %}
+
+      <div class="memberfeed">
+        <div class="mpartimg">
+          <img src="{{ member.uavatar }}" alt="..." class="img-circle">
+        </div>
+        <div class="mparttitle">
+          <h3><p><a href="/members/m/{{ member.uid }}">{{ member.username }}</a></p></h3>
+        </div>
+        <hr>
+        <div class="mpartprofile">
+        <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.ugrade }}</p>
+        <p><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.udomain }}</p>
+        <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.uemail }}</p>
+</div>
+        <div style="clear:both;"></div>
+      </div>
+
+    {% end %}
+  </div><!-- /.col-lg-3 -->
+  <div class="col-lg-3 animated fadeInRight">
+  {% for member in memberlist[1::4] %}
+
+    <div class="memberfeed">
+      <div class="mpartimg">
+        <img src="{{ member.uavatar }}" alt="..." class="img-circle">
+      </div>
+      <div class="mparttitle">
+        <h3><p><a href="/members/m/{{ member.uid }}">{{ member.username }}</a></p></h3>
+      </div>
+      <hr>
+      <div class="mpartprofile">
+      <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.ugrade }}</p>
+      <p><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.udomain }}</p>
+      <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.uemail }}</p>
+</div>
+      <div style="clear:both;"></div>
+    </div>
+
+  {% end %}
+</div><!-- /.col-lg-3 -->
+<div class="col-lg-3 animated fadeInRight">
+{% for member in memberlist[2::4] %}
+
+  <div class="memberfeed">
+    <div class="mpartimg">
+      <img src="{{ member.uavatar }}" alt="..." class="img-circle">
+    </div>
+    <div class="mparttitle">
+      <h3><p><a href="/members/m/{{ member.uid }}">{{ member.username }}</a></p></h3>
+    </div>
+    <hr>
+    <div class="mpartprofile">
+    <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.ugrade }}</p>
+    <p><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.udomain }}</p>
+    <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.uemail }}</p>
+</div>
+    <div style="clear:both;"></div>
+  </div>
+
+{% end %}
+</div><!-- /.col-lg-3 -->
+<div class="col-lg-3 animated fadeInRight">
+{% for member in memberlist[3::4] %}
+
+  <div class="memberfeed">
+    <div class="mpartimg">
+      <img src="{{ member.uavatar }}" alt="..." class="img-circle">
+    </div>
+    <div class="mparttitle">
+      <h3><p><a href="/members/m/{{ member.uid }}">{{ member.username }}</a></p></h3>
+    </div>
+    <hr>
+    <div class="mpartprofile">
+    <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.ugrade }}</p>
+    <p><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.udomain }}</p>
+    <p><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp;{{ member.uemail }}</p>
+</div>
+    <div style="clear:both;"></div>
+  </div>
+
+{% end %}
+</div><!-- /.col-lg-3 -->
+
+  </div><!-- /.row -->
+</div>
+{% end %}

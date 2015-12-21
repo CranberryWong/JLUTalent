@@ -1,0 +1,41 @@
+{% extends "home_listbase.html" %}
+{% block active6 %}class="active"{% end %}
+    {% block submaincontent %}
+
+        <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>File Name</th>
+          <th>Create Time</th>
+          <th>#</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for upload in list %}
+        <tr>
+          <th scope="row">{{ upload.fileid }}</th>
+          <td>{{ upload.filename }}</td>
+          <td>{{ upload.cettime }}</td>
+          <td><a href="{{ upload.fileurl }}">Download</a></td>
+        </tr>
+        {% end %}
+      </tbody>
+    </table>
+
+
+        <div style="text-align:center;margin-top:80px;">
+          <nav>
+            <ul class="pagination">
+              <li><a href="{{ handler.pagination.action }}{{ handler.pagination.pre }}">&laquo;</a></li>
+              {% for page in handler.pagination.pages %}
+              <li {% if handler.pagination.current == page %} class="active" {% end %}><a href="{{ handler.pagination.action }}{{ page }}">{{ page }}</a></li>
+              {% end %}
+              <li><a href="{{ handler.pagination.action }}{{ handler.pagination.next }}">&raquo;</a></li>
+              </ul>
+            </ul>
+          </nav>
+        </div>
+
+    {% end %}
+    <!-- /END THE FEATURETTES -->

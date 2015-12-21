@@ -1,0 +1,11 @@
+{% extends "admin_base.html" %}
+{% block maincontent %}
+<h2 class="sub-header">Settings</h2>
+<form role="form" method="POST" action="/admin/translate" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="exampleInputPassword1">翻译</label>
+    <textarea rows="16" class="form-control" id="translateField" placeholder="Enter Translate" name="translate">{{ translateCSV }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% end %}

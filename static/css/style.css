@@ -1,0 +1,84 @@
+.signcontainer{
+	max-width:330px;
+	background-color:rgba(255,255,255,.50);
+	border-radius:25px;
+	box-shadow:0 1px 2px rgba(0,0,0,.25);
+	margin:0px auto 0px auto;
+	padding:0px auto 0px auto;
+	z-index:1;
+}
+.form-signup{
+	max-width:330px;
+	padding:25px;
+	margin:0 auto;
+}
+.form-signup input{
+	margin:10px 0;
+	height:40px;
+}
+.margintopfixed{
+	margin-top:0px;
+}
+.abouttitlefixed{
+	margin-top:0;
+}
+.memberfeed{
+	border-top:3px solid #428bca;
+	background-color:#ffffff;
+	box-shadow:0 2px 3px rgba(0,0,0,.25);
+	padding:20px;
+	margin-bottom:20px;
+	text-align:center;
+}
+.mpartimg{
+
+}
+.mpartprofile{
+	text-align: left;
+	margin-bottom:20px;
+}
+.mpartimg > img{
+	height:90px;
+	width:90px;
+}
+.mparttitle{
+	margin:0 10px 0 10px;
+}
+.mpartbio{
+	float:left;
+	max-width:223px;
+	word-break:break-all;
+	overflow:auto;
+}
+.featurette-heading-fixed{
+	margin-top:0;
+	font-size: 50px;
+}
+.list-margin-fixed{
+	margin:0 3px;
+}
+.list-margin-top-fixed{
+	margin:12px 5px;
+}
+.home-page-img{
+	height:150px;
+	width:150px;
+}
+.pageavatar{
+	position:absolute;
+	z-index:19;
+	text-align:center;
+	margin-top:100px;
+	display:block;
+}
+.index-news-background{
+	padding:30px;
+	background-color:#fafafa;
+	border-bottom:1px #cccccc solid;
+}
+.exception {
+	margin:120px 0;
+}
+.exception > img {
+	width:50%;
+}

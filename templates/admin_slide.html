@@ -1,0 +1,54 @@
+{% extends "admin_base.html" %}
+{% block active5 %}class="active"{% end %}
+{% block maincontent %}
+<h2 class="sub-header" id="nav-article">All Inform</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Inform Id</th>
+        <th>Title</th>
+        <th>Create Time</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for inform in informs %}
+      <tr>
+        <td>{{ inform.iid }}</td>
+        <td>{{ inform.ititle }}</td>
+        <td>{{ inform.icettime }}</td>
+        <td><div><span><a href="/admin/slide?iid={{ inform.iid }}">Edit</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><a href="/admin/delslide?iid={{ inform.iid }}">Delete</a></span></div></td>
+      </tr>
+      {% end %}
+    </tbody>
+  </table>
+</div>
+<hr>
+<h2 class="sub-header">Add Slide</h2>
+<form role="form" method="POST" action="/admin/slide" enctype="multipart/form-data">
+  <input type="hidden" name="iid" value="{{ informobj.iid }}">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Title</label>
+    <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Enter title" name="ititle" value="{{ informobj.ititle }}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Abstract</label>
+    <textarea rows="16" class="form-control" id="exampleInputPassword1" placeholder="Enter abstract" name="iabstract">{{ informobj.iabstract }}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">URL</label>
+    <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Enter URL" name="iurl" value="{{ informobj.iurl }}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">ButtonView</label>
+    <input type="input" class="form-control" id="exampleInputEmail1" placeholder="Enter ButtonView" name="ibtnview" value="{{ informobj.ibtnview }}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">Picture</label>
+    <input type="file" name="file" id="exampleInputFile" value="{{ informobj.iurl }}">
+    <p class="help-block">PS:16:5图片最佳</p>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% end %}

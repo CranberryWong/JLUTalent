@@ -1,0 +1,35 @@
+{% extends "admin_base.html" %}
+{% block active8 %}class="active"{% end %}
+{% block maincontent %}
+<h2 class="sub-header" id="nav-article">Upload files</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Download</th>
+        <th>Name</th>
+        <th>Create Time</th>
+        <th>Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for upload in list %}
+      <tr>
+        <td>{{ upload.fileid }}</td>
+        <td>{{ upload.filename }}</td>
+        <td>{{ upload.cettime }}</td>
+        <td><div><span><a href="/admin/deldownload?fileid={{ upload.fileid }}">Delete</a></span></div></td>
+      </tr>
+      {% end %}
+    </tbody>
+  </table>
+</div>
+<hr>
+<h2 class="sub-header">Add Link</h2>
+<form action='/admin/download' method='POST' enctype="multipart/form-data">
+<div class="form-group">
+<input  name="file" type="file" id="exampleInputFile">
+</div>
+<button type="submit" class="btn btn-primary">submit</button>
+</form>
+{% end %}

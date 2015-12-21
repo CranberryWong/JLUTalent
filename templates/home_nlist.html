@@ -1,0 +1,33 @@
+{% extends "home_listbase.html" %}
+{% block active5 %}class="active"{% end %}
+
+    {% block submaincontent %}
+    {% if thisquery != None %}
+    <ol class="breadcrumb">
+      <li class="active">{{ thisquery }}</li>
+    </ol>
+    {% end %}
+    {% for article in list %}
+    <div class="blog-post">
+      <h2 class="blog-post-title"><a href="/articles/a/{{ article.id }}">{{ article.title }}</a></h2>
+      <img src="{{ article.useravatar }}" alt="..." class="img-circle list-margin-fixed" style="height:38px;width:38px;">&nbsp;&nbsp;<a href="{{ article.userlink }}">{{ article.user }}</a>&nbsp;&nbsp;&nbsp;&nbsp;Type:<a href="{{ article.typelink }}">{{ article.type }}</a>
+      <p class="blog-post-meta">Create time:{{ article.pubtime }}&nbsp;&nbsp;&nbsp;&nbsp;Change time:{{ article.chgtime }}</p>
+      <P> {{ article.subcontent }}<a href="/articles/a/{{ article.id }}">Show all...</a></p>
+    </div><!-- /.blog-post -->
+    <hr>
+    {% end %}
+
+    <div style="text-align:center;margin-top:80px;">
+      <nav>
+        <ul class="pagination">
+          <li><a href="{{ handler.pagination.action }}{{ handler.pagination.pre }}">&laquo;</a></li>
+          {% for page in handler.pagination.pages %}
+          <li {% if handler.pagination.current == page %} class="active" {% end %}><a href="{{ handler.pagination.action }}{{ page }}">{{ page }}</a></li>
+          {% end %}
+          <li><a href="{{ handler.pagination.action }}{{ handler.pagination.next }}">&raquo;</a></li>
+          </ul>
+        </ul>
+      </nav>
+    </div>
+    {% end %}
+    <!-- /END THE FEATURETTES -->

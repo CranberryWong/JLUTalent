@@ -1,0 +1,72 @@
+{% extends "admin_base.html" %}
+{% block customCssLink %}
+<link href="/static/css/bootstrap-switch.css" rel="stylesheet">
+{% end %}
+{% block customJSLink %}
+<script src="/static/js/angular.js"></script>
+<script src="/static/js/bootstrap-switch.js"></script>
+<script src="/static/js/app.js"></script>
+<script>
+/*$(document).ready(function(){
+  $("#check").click(function(){
+    $.post("/admin/changechecked",
+    {
+      uchecked:$(this).text(),
+      uid:$(this).attr("value")
+    },
+    function(data, status){
+      console.log("Data:"+ data + "\nStatus:" + status);
+      if($(this).text() === "False"){
+      $(this).innerHTML = "True";
+      console.log($(this).text());}
+      else{
+        $(this).innerHTML = "False";
+        console.log($(this).text());
+      }
+    });
+  });
+});
+$(document).ready(function(){
+  $("#limit").click(function(){
+    $.post("/admin/changelimit",
+    {
+      uchecked:$(this).text(),
+      uid:$(this).attr("value")
+    },
+    function(data, status){
+      console.log("Data:"+ data + "\nStatus:" + status);
+    });
+  });
+});*/
+</script>
+{% end %}
+{% block active3 %}class="active"{% end %}
+{% block maincontent %}
+<h2 class="sub-header" id="nav-user">Limits Manage</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Username</th>
+        <th>Checked</th>
+        <th>Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in userlist %}
+      <tr>
+        <td>{{ user.uid }}</td>
+        <td>{{ user.username }}</td>
+        <td><a href="/admin/changechecked?uid={{ user.uid }}&ucheck={{ user.ucheck }}"><button id="check" type="button" class="btn btn-default btn-xs" value="{{ user.uid }}">{{ user.ucheck }}</button></a></td>
+        <td><div class="btn-group btn-group-xs" role="group" aria-label="Small button group" id=>
+          {% for limit in limitlist %}
+          <button id="limits" type="button" class="btn {% if user.luid == limit.lid %}btn-info"{% else %}btn-default"{% end %}><a href="/admin/changelimit?uid={{ user.uid }}&lid={{ limit.lid }}">{{ limit.lname }}</a></button>
+          {% end %}
+      </div></td>
+      </tr>
+      {% end %}
+    </tbody>
+  </table>
+</div>
+{% end %}

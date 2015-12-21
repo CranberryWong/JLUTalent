@@ -1,0 +1,15 @@
+{% extends "home_listbase.html" %}
+
+{% block active2 %}class="active"{% end %}
+    {% block submaincontent %}
+
+
+          <div class="blog-post">
+            <h2 class="blog-post-title">{{ page.ptitle }}</h2>
+            <p class="blog-post-meta">Create time:{{ page.ppubtime }}&nbsp;&nbsp;&nbsp;&nbsp;Change time:{{ page.pchgtime }}</p>
+            <P> {{ page.pcontent }}</p>
+          </div><!-- /.blog-post -->
+
+
+    {% end %}
+    <!-- /END THE FEATURETTES -->
